@@ -68,7 +68,6 @@ function onClick() {
             this.innerHTML = "";
             this.classList.add("bomb");            
             gameOver = true;
-            // this.removeEventListener("click", onClick);
         } else {
             this.classList.add("afterClick");
             score ++;
