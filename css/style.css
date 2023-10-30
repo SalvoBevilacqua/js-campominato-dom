@@ -1,0 +1,115 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ROOT */
+:root {
+    --background: rgb(172, 240, 252);
+}
+
+body {
+    font-family: 'Exo 2', sans-serif;
+}
+
+/* HEADER */
+header {
+    padding: 0 2rem;
+    background-color: white;
+    height: 80px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.form, .header_link {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+.header_link {
+    text-decoration: inherit;
+    color: inherit;
+}
+
+img {
+    width: 70px;
+}
+
+button {
+    padding: .2rem 1rem;
+}
+
+/* MAIN */
+main {
+    width: 100%;
+    height: calc(100vh - 160px);
+    background-color: var(--background);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    height: 90%;
+    aspect-ratio: 1;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    overflow: auto;
+}
+
+.cell10 {
+    width: calc(100% / 10);
+}
+
+.cell9 {
+    width: calc(100% / 9);
+}
+
+.cell7 {
+    width: calc(100% / 7);
+}
+
+.cell10, .cell9, .cell7 {
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid black;
+    background-color: whitesmoke;
+}
+
+.afterClick {
+    background-color: var(--background);
+    color: white;
+}
+
+.bomb {
+    background-color: red;
+}
+
+.intro {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+    font-size: xx-large;
+    text-align: center;
+}
+
+/* FOOTER */
+footer {
+    padding: 0 2rem;
+    background-color: white;
+    height: 80px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
