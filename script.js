@@ -5,8 +5,9 @@ const level = document.getElementById("mySelect");
 let width = "cell10";
 let totOfCell = 100;
 let score = 0;
-let click = 0;
+let maxClick = 0;
 let bombArray = [];
+let click = 0;
 
 play.addEventListener("click", function()
 {
@@ -24,6 +25,9 @@ play.addEventListener("click", function()
             totOfCell = 49;
             break;
     };
+
+    maxClick = totOfCell - 16;
+
     newGrid(width, totOfCell, container);
 
     randomArray(totOfCell);
@@ -63,6 +67,12 @@ function onClick() {
         score += textCell;
         console.log("il tuo punteggio è di: ", score);
     }
+    if(click < maxClick) {
+        click +=1;
+    } else {
+
+    }
+    console.log(click);
     return score;
 }
 
