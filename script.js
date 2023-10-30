@@ -1,13 +1,14 @@
 const container = document.querySelector(".container");
 const play = document.querySelector("button");
 const level = document.getElementById("mySelect");
+const introHtml = document.getElementById(".intro");
 
 let width = "cell10";
 let totOfCell = 100;
 let score = 0;
 let maxClick = 0;
 let bombArray = [];
-let click = 0;
+let gameOver = false;
 
 play.addEventListener("click", function()
 {
@@ -25,6 +26,8 @@ play.addEventListener("click", function()
             totOfCell = 49;
             break;
     };
+
+    gameOver = false;
 
     maxClick = totOfCell - 16;
 
@@ -56,24 +59,27 @@ function createGrid(numberOfCells, string) {
 }
 
 function onClick() {
-    const textCell = parseInt(this.textContent);
+    if(!gameOver) {
+        const textCell = parseInt(this.textContent);
     if (bombArray.includes(textCell)) {
         console.log("Hai beccato una bomba!");
         console.log("il tuo punteggio è di: ", score);
         this.classList.add("bomb");
+        gameOver = true;
         // this.removeEventListener("click", onClick);
     } else {
         this.classList.add("afterClick");
-        score += textCell;
+        score ++;
         console.log("il tuo punteggio è di: ", score);
     }
-    if(click < maxClick) {
-        click +=1;
-    } else {
-
+    if(score == maxClick) {
+        container.innerHTML = "";
+        container.innerHTML = `<h1>Complimenti, hai concluso il livello con ${score} punti<h1>`;
+        gameOver = true;
     }
-    console.log(click);
+    console.log(score);
     return score;
+    }    
 }
 
 function randomNum(min, max) {
