@@ -90,6 +90,8 @@ main {
 
 .bomb {
     background-color: red;
+    background-image: url(../img/bomba.png);
+    background-size: cover;
 }
 
 .intro {

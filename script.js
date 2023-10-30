@@ -45,15 +45,16 @@ play.addEventListener("click", function()
 function newGrid(width, totOfCell, container) {
     container.innerHTML = "";
     for (let i = 1; i < totOfCell + 1; i++) {
-        const newCell = createGrid([i], width);
+        const newCell = createGrid([i], width, [i]);
         newCell.addEventListener("click", onClick)
         container.append(newCell);
     }
 }
 
-function createGrid(numberOfCells, string) {
+function createGrid(numberOfCells, string, classe) {
     const cell = document.createElement("div");
     cell.classList.add(string);
+    cell.classList.add(classe);
     cell.innerHTML = numberOfCells;
     return cell;
 }
@@ -61,24 +62,24 @@ function createGrid(numberOfCells, string) {
 function onClick() {
     if(!gameOver) {
         const textCell = parseInt(this.textContent);
-    if (bombArray.includes(textCell)) {
-        console.log("Hai beccato una bomba!");
-        console.log("il tuo punteggio è di: ", score);
-        this.classList.add("bomb");
-        gameOver = true;
-        // this.removeEventListener("click", onClick);
-    } else {
-        this.classList.add("afterClick");
-        score ++;
-        console.log("il tuo punteggio è di: ", score);
-    }
-    if(score == maxClick) {
-        container.innerHTML = "";
-        container.innerHTML = `<h1>Complimenti, hai concluso il livello con ${score} punti<h1>`;
-        gameOver = true;
-    }
-    console.log(score);
-    return score;
+        if (bombArray.includes(textCell)) {
+            console.log("Hai beccato una bomba!");
+            console.log("il tuo punteggio è di: ", score);
+            this.innerHTML = "";
+            this.classList.add("bomb");            
+            gameOver = true;
+            // this.removeEventListener("click", onClick);
+        } else {
+            this.classList.add("afterClick");
+            score ++;
+            console.log("il tuo punteggio è di: ", score);
+        }
+        if(score == maxClick) {
+            container.innerHTML = "";
+            container.innerHTML = `<h1>Complimenti, hai concluso il livello con ${score} punti<h1>`;
+            gameOver = true;
+        }
+        return score;
     }    
 }
 
