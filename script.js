@@ -65,9 +65,9 @@ function onClick() {
         if (bombArray.includes(textCell)) {
             console.log("Hai beccato una bomba!");
             console.log("il tuo punteggio è di: ", score);
-            this.innerHTML = "";
-            this.classList.add("bomb");            
+            end(bombArray, width);
             gameOver = true;
+            
         } else {
             this.classList.add("afterClick");
             score ++;
@@ -95,4 +95,22 @@ function randomArray(max) {
         }
     }
     return bombArray;
+}
+
+function end(bombs, string) {
+    let allCells = document.querySelectorAll(".cell10");
+        
+    if (string === "cell9")
+        allCells = document.querySelectorAll(".cell9");
+    else if (string === "cell7") 
+        allCells = document.querySelectorAll(".cell7");
+    
+    for(let i = 0; i < allCells.length; i++) {
+        const curCell = allCells[i];
+        const curNumber = parseInt(curCell.textContent);
+        if(bombs.includes(curNumber)) {
+            curCell.innerHTML = "";
+            curCell.classList.add("bomb");        
+        }
+    }
 }
